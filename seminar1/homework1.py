@@ -20,13 +20,16 @@ import math
 # ⋁ - "Или"
 # ⋀ - "И"
 # ¬ - "Не"
-# for x in range(2):
-#     for y in range(2):
-#         for z in range(2):
-#             if (not(x or y or z)) == (not x and not y and not z):
-#                 print('true')
-#             else:
-#                 print('false')
+# xp = [True, False]
+# yp = [True, False]
+# zp = [True, False]
+# for x in xp:
+#     for y in yp:
+#         for z in zp:
+#             print(x, y, z)
+#             res1 = not (x or y or z)
+#             res2 = (not x) and (not y) and (not z)
+#             print(res1 == res2)
 
 
 # 3.Напишите программу, которая принимает на вход координаты точки (X и Y), 
@@ -56,6 +59,7 @@ import math
 
 # 4.Напишите программу, которая по заданному номеру четверти,
 # показывает диапазон возможных координат точек в этой четверти (x и y).
+#Вариант 1
 # a = int(input('Ведите номер четверти: '))
 # if a == 1:
 #     print('x > 0, y > 0')
@@ -67,6 +71,10 @@ import math
 #     print('x > 0, y < 0')
 # elif 0 > a or a > 4:
 #     print('Введите значение от 1 до 4')
+#Вариант 2
+# a = input()
+# d = {'1':'x>0 y>0', '2': 'x<0 y>0', '3': 'x<0 y<0', '4': 'x>0 y<0'}
+# print(d[a])
 
 
 # 5.Напишите программу, которая принимает на вход координаты двух точек 
@@ -74,7 +82,8 @@ import math
 # Пример:
 # A(3,6); B(2,1) -> 5,09
 # A(7,-5); B(1,-1) -> 7,21
-a = [7, -5]
-b = [1, -1]
-resul = round(math.sqrt(math.pow((b[0] - a[0]), 2) + math.pow((b[1] - a[1]), 2)), 2)
-print(f'Растояние между точками {resul}')
+# a = [7, -5]
+# b = [1, -1]
+# resul = round(math.sqrt(math.pow((b[0] - a[0]), 2) + math.pow((b[1] - a[1]), 2)), 2)
+# print(f'Растояние между точками {resul}')
+
