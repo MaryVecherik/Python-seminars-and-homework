@@ -59,6 +59,7 @@ import random
 #     pr *= list[int(i)]        
 # print(pr)
 
+
 #Реализуйте алгоритм перемешивания списка.
 list = []
 for i in range(5):
