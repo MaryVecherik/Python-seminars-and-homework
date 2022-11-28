@@ -1,5 +1,6 @@
 import math
 import os
+import random
 
 #Напишите программу, которая принимает на вход вещественное число и показывает сумму его цифр.
 # Пример:
@@ -41,20 +42,27 @@ import os
 # Позиции хранятся в файле file.txt в одной строке одно число.
 # (для продвинутых - с файлом, вариант минимум - ввести позиции в консоли) -2 -1 0 1 2 
 # Позиции: 0,1 -> 2
-os.chdir(r'C:\Users\Мария\Desktop\Учеба\2 четверть\1. Знакомство с Python\Семинары и домашка\Python\seminar2')
-with open('file.txt') as f:
-    a = f.read().split('\n')
-print(a)
+# os.chdir(r'C:\Users\Мария\Desktop\Учеба\2 четверть\1. Знакомство с Python\Семинары и домашка\Python\seminar2')
+# with open('file.txt') as f:
+#     a = f.read().split('\n')
+# print(a)
 
-n = int(input('Количество элементов: N = '))
-list = []
-for i in range(-n, n+1):
-        list.append(i)
-print(list)
+# n = int(input('Количество элементов: N = '))
+# list = []
+# for i in range(-n, n+1):
+#         list.append(i)
+# print(list)
 
-pr = 1
-for i in a:
-    pr *= list[int(i)]        
-print(pr)
+# pr = 1
+# for i in a:
+#     pr *= list[int(i)]        
+# print(pr)
 
 #Реализуйте алгоритм перемешивания списка.
+list = []
+for i in range(5):
+    list.append(i)
+print(list)
+
+random.shuffle(list)   
+print(list)
