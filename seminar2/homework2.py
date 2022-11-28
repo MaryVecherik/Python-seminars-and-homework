@@ -2,6 +2,7 @@ import math
 import os
 import random
 
+
 #Напишите программу, которая принимает на вход вещественное число и показывает сумму его цифр.
 # Пример:
 # 6782 -> 23
@@ -62,7 +63,8 @@ import random
 list = []
 for i in range(5):
     list.append(i)
+print("Исходный список: ")
 print(list)
-
+print("Перемешанный список: ")
 random.shuffle(list)   
 print(list)
