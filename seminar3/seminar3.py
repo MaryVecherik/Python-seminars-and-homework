@@ -22,7 +22,6 @@
 #     print('No')
 
 
-
 # Задача 2
 # Напишите программу, которая определит позицию второго вхождения строки в списке либо сообщит, что её нет.
 # Пример:
@@ -33,30 +32,30 @@
 # список: [], ищем: "123", ответ: -1
 
 # Вариант 1
-list = ["qwe", "asd", "zxc", "qwe", "ertqwe"]
-str = "123"
-count = 0
-index = 0
-for i in list:
-    if i == str:
-        count += 1
-        if count == 2:
-            print(index)
-            break
-    index += 1
-if count < 2:
-    print("-1")
+# list = ["qwe", "asd", "zxc", "qwe", "ertqwe"]
+# str = "123"
+# count = 0
+# index = 0
+# for i in list:
+#     if i == str:
+#         count += 1
+#         if count == 2:
+#             print(index)
+#             break
+#     index += 1
+# if count < 2:
+#     print("-1")
 
 #########################
 mass = ["123", "234", "123", "567"]
 a = "123"
 
 # Вариант 2
-try:
-    mass.remove(a)
-    print((mass.index(a))+1)
-except ValueError:
-    print(-1)
+# try:
+#     mass.remove(a)
+#     print((mass.index(a))+1)
+# except ValueError:
+#     print(-1)
 
 # Вариант 3
 if mass.count(a) < 2:
