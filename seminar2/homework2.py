@@ -10,7 +10,7 @@ import random
 # num = input('Введите число: ') 
 # sum = 0
 # for i in num:
-#      if i!='.' and i!=',':
+#      if i!='.' and i!=',' and i!='-':
 #         sum += int(i)
 # print(f'Сумма числа = {sum}')
 
@@ -61,11 +61,11 @@ import random
 
 
 #Реализуйте алгоритм перемешивания списка.
-list = []
-for i in range(5):
-    list.append(i)
-print("Исходный список: ")
-print(list)
-print("Перемешанный список: ")
-random.shuffle(list)   
-print(list)
+# list = []
+# for i in range(5):
+#     list.append(i)
+# print("Исходный список: ")
+# print(list)
+# print("Перемешанный список: ")
+# random.shuffle(list)   
+# print(list)
