@@ -1,3 +1,4 @@
+
 # 1.Задайте список из нескольких чисел. Напишите программу, 
 # которая найдёт сумму элементов списка, стоящих на нечётной позиции.
 # Пример: [2, 3, 5, 9, 3] -> на нечётных позициях элементы 3 и 9, ответ: 12
@@ -21,29 +22,35 @@
 # Пример:
 # [2, 3, 4, 5, 6] => [12, 15, 16];
 # [2, 3, 5, 6] => [12, 15]
-import math
-list = [2, 3, 4, 5, 6]
-new_list = [len(list)/2+1]
-for i in range(len(new_list)):
-    new_list[i] = list[i] * list[len(list)-i-1]
-
-
-print(new_list)
+# list = [2, 3, 4, 5, 6]
+# resultat = []
+# leng = len(list)
+# a = int((leng+1)/2)
+# for i in range(a):
+#     resultat.append(list[i] * list[leng-i-1])
+# print(resultat)
 
 
 
 # 3.Задайте список из вещественных чисел. Напишите программу, 
 # которая найдёт разницу между максимальным и минимальным значением дробной части элементов.
 # Пример: [1.1, 1.2, 3.1, 5, 10.01] => 0.19 (максимальное значение у числа 1.2, минимальное у 10.01)
+
+# def separate(num: float) -> float:
+#     """Отделяет дробную часть от целой""" # 1.11
+#     list_num = str(num).split('.')        # ['1','11']
+#     return float('0.'+list_num[1])        # 0.11
+
+# def max_vs_min(list: list[float]) -> float:
+#     """Возвращает разницу между максимальным и минимальным дробным значением
+#     списка"""
+#     new_list = [separate(i) for i in list if int(i) != float(i)]
+#     print(new_list)
+#     return max(new_list) - min(new_list)
+
 # list = [1.1, 1.2, 3.1, 5, 10.01]
-# max = 0
-# min = 0
-# for i in list:
-#     if list[i] > max:
-#         max = list[i]
-#     if list[i] < min:
-#         min = list[i]
-# print(max-min)
+# print(max_vs_min(list))
+
 
 
 # 4.Напишите программу, которая будет преобразовывать десятичное число в двоичное.
@@ -59,6 +66,27 @@ print(new_list)
 # print(s)
 
 
+
 # 5.Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.(Дополнительное)
 # Пример:
 # для k = 8 список будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21] 
+def fib(n):
+    """Фибоначчи"""
+    if n in [1, 2]:
+        return 1
+    elif n == 0:
+        return 0
+    else:
+        return fib(n-1) + fib(n-2)
+
+def neg_fib(n):
+    """Негофибоначчи"""
+    return (-1)**(n+1)*fib(n)
+
+n = 8
+list = []
+for i in range(n+1)[::-1]: 
+    list.append(neg_fib(i))
+for i in range(1, n+1):
+    list.append(fib(i))
+print(list)
