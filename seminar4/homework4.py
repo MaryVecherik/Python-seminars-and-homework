@@ -53,16 +53,18 @@ import sympy
 # В file1.txt: 2*x**2 + 4*x + 5
 # В file2.txt: 4*x**2 + 1*x + 4
 # Результирующий файл: 6*x**2 + 5*x + 9
+
 os.chdir(r'C:\Users\Мария\Desktop\Учеба\2 четверть\1. Знакомство с Python\Семинары и домашка\Python\seminar4')
+
 with open('file1.txt', 'r') as f:
     a = f.read()
 print(a)
 print(type(a))
+
 with open('file2.txt', 'r') as f:
     b = f.read()
 print(b)
 print(type(b))
-
 
 x = sympy.Symbol('x')
 c = sympy.simplify(a+b)
@@ -72,7 +74,7 @@ print(type(c))
 # with open('res.txt', 'w') as f:
 #     f.write()
 
+
 # a = 2*x**2 + 4*x + 5
-# print(type(a))
 # b = 4*x**2 + 1*x + 4
 
