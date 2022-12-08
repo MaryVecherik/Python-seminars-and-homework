@@ -62,14 +62,13 @@ def write_file(stroka):
 k = 2
 stroka = ''
 for i in range(k, -1, -1):
-    stroka += f'{rnd(0,2)}*x**{i}+'
+    stroka += f'{rnd(0,2)}x^{i}+'
     if i == 0:
-        stroka += f'{rnd(0,100)}*x**{i}'
+        stroka += f'{rnd(0,100)}x^{i}'
 
 print(stroka)
 write_file(stroka)
     
-
 
 # 5.Даны два файла, в каждом из которых находится запись многочлена. 
 # Задача - сформировать файл, содержащий сумму многочленов.
