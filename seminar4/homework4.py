@@ -17,12 +17,12 @@ import sympy
 # print(round(pi, d))
 
 # # Вариант с семинара
-def format(pi:float, d:float) -> float:
-    d = str(d)
-    d = len(d[d.find('.')+1::])
-    return float(f'{pi:0.{d}f}')
-d = 0.001
-print(format(pi, d))
+# def format(pi:float, d:float) -> float:
+#     d = str(d)
+#     d = len(d[d.find('.')+1::])
+#     return float(f'{pi:0.{d}f}')
+# d = 0.001
+# print(format(pi, d))
 
 
 # 2 и 3 задачи обьединила
@@ -54,20 +54,20 @@ print(format(pi, d))
 # k=2 => 2*x^2 + 4*x + 5 или x^2 + 5 или 10*x**2
 # k=3 => 2*x^3 + 4*x^2 + 4*x + 5
 
-# def write_file(stroka):
-#     chdir(r'C:\Users\Мария\Desktop\Учеба\2 четверть\1. Знакомство с Python\Семинары и домашка\Python\seminar4')
-#     with open('file.txt', 'w') as f:
-#         f.write(stroka)
+def write_file(stroka):
+    chdir(r'C:\Users\Мария\Desktop\Учеба\2 четверть\1. Знакомство с Python\Семинары и домашка\Python\seminar4')
+    with open('file.txt', 'w') as f:
+        f.write(stroka)
 
-# k = 2
-# stroka = ''
-# for i in range(k, -1, -1):
-#     stroka += f'{rnd(0,2)}x^{i}+'
-#     if i == 0:
-#         stroka += f'{rnd(0,100)}x^{i}'
+k = 3
+stroka = ''
+for i in range(k, -1, -1):
+    stroka += f'{rnd(0,2)}*x^{i}+'
+    if i == 0:
+        stroka += f'{rnd(1,100)}*x^{i}'
 
-# print(stroka)
-# write_file(stroka)
+print(stroka)
+write_file(stroka)
     
 
 # 5.Даны два файла, в каждом из которых находится запись многочлена. 
