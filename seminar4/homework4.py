@@ -9,14 +9,14 @@ import sympy
 # при d = 0.001, π = 3.141
 # при d = 0.0001, π = 3.1415
 # print(pi)
-# # Вариант 1
+# Вариант мой
 # d = 0.001
 # d = str(d)
 # d = d[2:len(d)]
 # d = len(d)
 # print(round(pi, d))
 
-# # Вариант с семинара
+# Вариант с семинара
 # def format(pi:float, d:float) -> float:
 #     d = str(d)
 #     d = len(d[d.find('.')+1::])
