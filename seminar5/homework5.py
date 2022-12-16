@@ -1,6 +1,5 @@
 from random import randint as rnd
 
-
 # На выбор:
 
 # 1. Создайте программу для игры с конфетами.
@@ -10,25 +9,24 @@ from random import randint as rnd
 # a) человек против человека.
 # b) добавьте игру против бота
 
-def move_people(player, candies, max_move):
+def move_people(player, candies, max_take):
     """xод игрока"""
-    valid = False
-    while not valid:
+    while True:
         move = int(input(f'{player}, Ваш ход... '))
-        if move > 0 and move <= max_move and move <= candies:
+        if move > 0 and move <= max_take and move <= candies:
             print(f'Ты забрал(а) {move} конфет')
             candies -= move
             print(f'Осталось {candies} конфет')
-            valid = True
+            break
         else:
-            print(f'Количество взятых конфет должно быть до {max_move} или не больше оставшегося количества конфет')
+            print(f'Количество взятых конфет должно быть до {max_take} или не больше оставшегося количества конфет')
     return candies
 
-def move_bot(candies, max_move):
+def move_bot(candies, max_take):
     """xод бота"""
-    move = candies % (max_move + 1)
+    move = candies % (max_take + 1)
     if move == 0:
-        move = rnd(1, max_move) if candies >= max_move else candies
+        move = rnd(1, max_take) if candies >= max_take else candies
     print(f'Бот забрал {move} конфет')
     candies -= move
     print(f'Осталось {candies} конфет')
@@ -41,64 +39,59 @@ def check_win(candies, set_move, player1, player2):
     else:
         return False
 
-def people():
-
-    print('Привет! Тебя приветствует игра "Забери все конфеты!"')
-    print('Основные правила игры: Дано 117 конфет, за один ход можно взять не более 28 конфет')
+def people(candies, max_take):
     print('Итак, начнём!')
 
     player1 = input('Введите имя первого игрока: ')
     player2 = input('Введите имя второго игрока: ')
-    candies = 117 
-    max_move = 28  
+     
 
-    count_for_check_win = candies // max_move
+    count_for_check_win = candies // max_take
     set_move = rnd(1, 2) # 
 
-    win = False
-    while not win:
+    while True:
         if set_move % 2 == 0:
-            candies = move_people(player1, candies, max_move)
+            candies = move_people(player1, candies,max_take)
         else:
-            candies = move_people(player2, candies, max_move)
+            candies = move_people(player2, candies, max_take)
         
         if set_move >= count_for_check_win - 1:
             temp = check_win(candies, set_move, player1, player2)
             if temp:
                 print(f'{temp} выиграл')
-                win = True
+                break
         set_move += 1
 
-def bot():
-    print('Привет! Тебя приветствует игра "Забери все конфеты!"')
+def bot(candies, max_take):
     print('Ты будешь играть с ботом.')
-    print('Основные правила игры: Дано 117 конфет, за один ход можно взять не более 28 конфет')
     print('Итак, начнём!')
 
     player = input('Введите имя игрока: ')
-    candies = 117 
-    max_move = 28  
-
-    count_for_check_win = candies // max_move #проверка выйгрыша
+    
+    count_for_check_win = candies // max_take #проверка выйгрыша
     set_move = rnd(1, 2) # установить ход
 
-    win = False
-    while not win:
+    while True:
         if set_move % 2 == 0:
-            candies = move_people(player, candies, max_move)
+            candies = move_people(player, candies, max_take)
         else:
-            candies = move_bot(candies, max_move)
+            candies = move_bot(candies, max_take)
 
         if set_move >= count_for_check_win - 1:
             temp = check_win(candies, set_move, player, 'Бот')
             if temp:
                 print(f'{temp} выиграл')
-                win = True
+                break
         set_move += 1
 
 
-people()
-# bot()
+print('Привет! Тебя приветствует игра "Забери все конфеты!"')
+print('Основные правила игры: Дано 117 конфет, за один ход можно взять не более 28 конфет')
+candies = 117 
+max_take = 28 
+
+people(candies, max_take)
+# bot(candies, max_take)
 
 
 
