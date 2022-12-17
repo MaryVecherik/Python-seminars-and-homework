@@ -41,11 +41,9 @@ def check_win(candies, set_move, player1, player2):
 
 def people(candies, max_take):
     print('Итак, начнём!')
-
     player1 = input('Введите имя первого игрока: ')
     player2 = input('Введите имя второго игрока: ')
      
-
     count_for_check_win = candies // max_take
     set_move = rnd(1, 2) # 
 
@@ -65,7 +63,6 @@ def people(candies, max_take):
 def bot(candies, max_take):
     print('Ты будешь играть с ботом.')
     print('Итак, начнём!')
-
     player = input('Введите имя игрока: ')
     
     count_for_check_win = candies // max_take #проверка выйгрыша
@@ -84,16 +81,23 @@ def bot(candies, max_take):
                 break
         set_move += 1
 
-
-print('Привет! Тебя приветствует игра "Забери все конфеты!"')
-print('Основные правила игры: Дано 117 конфет, за один ход можно взять не более 28 конфет')
-candies = 117 
-max_take = 28 
-
-people(candies, max_take)
-# bot(candies, max_take)
-
+def task1():
+    print('Привет! Тебя приветствует игра "Забери все конфеты!"')
+    print('Основные правила игры: Дано 117 конфет, за один ход можно взять не более 28 конфет')
+    candies = 117 
+    max_take = 28 
+    
+    people(candies, max_take)
+    bot(candies, max_take)
 
 
 # 2.Создайте программу для игры в ""Крестики-нолики"".
-#(в консоли происходит выбор позиции)
+# (в консоли происходит выбор позиции)
+
+def task2():
+    print('Привет! Тебя приветствует игра "Крестики-нолики!"')
+
+
+
+
+
