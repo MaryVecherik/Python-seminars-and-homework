@@ -55,6 +55,7 @@ def task4():
     with open('file.txt') as f:
         a = f.read().split('\n')
     print(a)
+    f.close()
 
     n = int(input('Количество элементов: N = '))
     list = []
@@ -77,3 +78,5 @@ def task5():
     print("Перемешанный список: ")
     random.shuffle(list)   
     print(list)
+
+task4()
