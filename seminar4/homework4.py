@@ -94,6 +94,7 @@ def task4():
         chdir(r'C:\Users\Мария\Desktop\Учеба\2 четверть\1. Знакомство с Python\Семинары и домашка\Python\seminar4')
         with open('file.txt', 'w') as f:
             f.write(stroka)
+            f.close()
 
     def create_stroka(k: int) -> str:
         """"Генерирует полином со случайными коэффициентами степени k
@@ -121,10 +122,13 @@ def task5():
     chdir(r'C:\Users\Мария\Desktop\Учеба\2 четверть\1. Знакомство с Python\Семинары и домашка\Python\seminar4')
     with open('file1.txt') as f:
         a = f.read()
+        f.close()
     print(a)
+    
 
     with open('file2.txt') as f:
         b = f.read()
+        f.close()
     print(b)
 
     x = sympy.Symbol('x')
@@ -134,5 +138,6 @@ def task5():
 
     with open('res.txt', 'w') as f:
         f.write(c)
+        f.close()
 
 task5()
