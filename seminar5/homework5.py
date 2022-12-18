@@ -2,7 +2,7 @@ from random import randint as rnd
 
 # На выбор:
 
-def task1():
+def game1():
     """
     1. Создайте программу для игры с конфетами.
     Условие игры: На столе лежит 117 конфета. Играют два игрока делая ход друг после друга. 
@@ -26,6 +26,7 @@ def task1():
 
     def move_bot(candys, max_take):
         """Ход бота"""
+        print('Ход бота')
         move = candys % (max_take + 1)
         if move == 0:
             move = rnd(1, max_take) if candys >= max_take else candys
@@ -64,7 +65,6 @@ def task1():
 
     def bot(candys, max_take):
         """Игра с ботом"""
-        print('Ты будешь играть с ботом.')
         print('Итак, начнём!')
         player = input('Введите имя игрока: ')
         
@@ -83,29 +83,23 @@ def task1():
                     break
             move += 1
 
-
     candys = 117 
     max_take = 28 
     print('Привет! Тебя приветствует игра "Забери все конфеты!"')
     print(f'Основные правила игры: Дано {candys} конфет, за один ход можно взять не более {max_take} конфет')
-    print('С кем хочешь играть? Введи 1 - человек, 2 - бот: ')
+    print('С кем хочешь играть? Введи: 1 - человек, 2 - бот')
     game = int(input()) 
     if game == 1:
         people(candys, max_take) 
     else:
         bot(candys, max_take)
-
-
-
-
-
-def task2():
+        
+def game2():
     """
     2.Создайте программу для игры в ""Крестики-нолики"".
     (в консоли происходит выбор позиции)
     """
     print('Привет! Тебя приветствует игра "Крестики-нолики!"')
 
-
-task1()
+game1()
 
