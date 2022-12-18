@@ -88,14 +88,12 @@ def task1():
     max_take = 28 
     print('Привет! Тебя приветствует игра "Забери все конфеты!"')
     print(f'Основные правила игры: Дано {candys} конфет, за один ход можно взять не более {max_take} конфет')
-    game = int(input('С кем будешь играть? Введи 1 если с Человеком, 2 - с Ботом: ')) 
+    print('С кем будешь играть? Введи 1-Человеком, 2-Ботом: ')
+    game = int(input()) 
     if game == 1:
         people(candys, max_take) 
     else:
         bot(candys, max_take)
-    
-    # people(candys, max_take)
-    # bot(candys, max_take)
 
 def task2():
     """
