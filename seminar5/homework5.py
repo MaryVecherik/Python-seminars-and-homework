@@ -21,7 +21,7 @@ def task1():
                 print(f'Осталось {candys} конфет')
                 break
             else:
-                print(f'Столько взять нельзя. Можно взять <= {max_take} или не больше оставшегося количества конфет')
+                print(f'Столько взять нельзя. Можно взять до {max_take} или не больше оставшегося количества конфет')
         return candys
 
     def move_bot(candys, max_take):
@@ -35,27 +35,27 @@ def task1():
         return candys
 
     def win(candys, move, player1, player2):
-        """Выигрыш"""
+        """Чей выйгрыш"""
         if candys == 0:
             return player1 if move % 2 == 0 else player2
         else:
             return False
 
     def people(candys, max_take):
+        """Игра с человеком"""
         print('Итак, начнём!')
         player1 = input('Введите имя первого игрока: ')
         player2 = input('Введите имя второго игрока: ')
         
-        check_win = candys // max_take
-        move = rnd(1, 2) 
-
+        move = rnd(1, 2)
+    
         while True:
             if move % 2 == 0:
                 candys = move_people(player1, candys, max_take)
             else:
                 candys = move_people(player2, candys, max_take)
             
-            if move >= check_win - 1:
+            if move >= (candys // max_take) - 1:
                 temp = win(candys, move, player1, player2)
                 if temp:
                     print(f'{temp} выиграл')
@@ -63,12 +63,11 @@ def task1():
             move += 1
 
     def bot(candys, max_take):
+        """Игра с ботом"""
         print('Ты будешь играть с ботом.')
         print('Итак, начнём!')
         player = input('Введите имя игрока: ')
         
-        check_win = candys // max_take
-        print(f'check_win = {check_win}')
         move = rnd(1, 2) 
 
         while True:
@@ -77,19 +76,26 @@ def task1():
             else:
                 candys = move_bot(candys, max_take)
 
-            if move >= check_win - 1:
+            if move >= (candys // max_take) - 1:
                 temp = win(candys, move, player, 'Бот')
                 if temp:
                     print(f'{temp} выиграл')
                     break
             move += 1
 
+
     candys = 117 
     max_take = 28 
     print('Привет! Тебя приветствует игра "Забери все конфеты!"')
     print(f'Основные правила игры: Дано {candys} конфет, за один ход можно взять не более {max_take} конфет')
+    game = int(input('С кем будешь играть? Введи 1 если с Человеком, 2 - с Ботом: ')) 
+    if game == 1:
+        people(candys, max_take) 
+    else:
+        bot(candys, max_take)
+    
     # people(candys, max_take)
-    bot(candys, max_take)
+    # bot(candys, max_take)
 
 def task2():
     """
