@@ -98,8 +98,37 @@ def game2():
     """
     2.Создайте программу для игры в ""Крестики-нолики"".
     (в консоли происходит выбор позиции)
-    """
+    """    
+    def show_field(field):
+        """Поле"""
+        for i in range(0, len(field), 3):
+            print(field[i], field[i+1], field[i+2])
+        return field
+    
+    def input_pos(field):
+        """Позиция на поле"""
+        while True:
+            position = int(input('Введите позицию: '))
+            if type(field[position-1]) == int and 1 <= position <= 9:
+                field[position-1] = 'X'
+                break
+            else:
+                print('Позиция занята')
+        return field
+    
     print('Привет! Тебя приветствует игра "Крестики-нолики!"')
+    
+    field = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    
+    print('-'*10)
+    show_field(field)
+    print('-'*10)
+    #цикл 
+    input_pos(field)
+    show_field(field)
+    print('-'*10)
 
-game1()
+
+
+game2()
 
