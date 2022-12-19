@@ -11,16 +11,21 @@ def task1():
     Вывод:
     Москва,-,Вологда,-,Владивосток,Хабаровск
     """
+    # Вариант мой
     stroka = 'Москва,Уфа,Вологда,Тула,Владивосток,Хабаровск'
     stroka = list(map(str, stroka.split(',')))
-    print(stroka)
     data = []
     for i in stroka:
         if len(i) < 5:
             data.append("-")
         else:
             data.append(i)
-    print(data) 
+    print(','.join(data))
+
+    # Вариант преподавателя
+    citys = 'Москва,Уфа,Вологда,Тула,Владивосток,Хабаровск'
+    a = list(map((lambda x: x if len(x) > 5 else '-'), citys.split(',')))
+    print(','.join(a))
 
 def task2():
     """
@@ -32,9 +37,7 @@ def task2():
     Вывод:
     (('house', 'дом'), ('car', 'машина'), ('men', 'человек'), ('tree', 'дерево'))
     """
-    stroka = 'house=дом car=машина men=человек tree=дерево'
-    stroka = list(map(str, stroka.split()))
-    print(stroka)
+    stroka = 'house=дом car=машина men=человек tree=дерево'.split()
     # Вариант 1
     data = tuple(map(lambda x: tuple(x.split('=')), stroka))
     print(f'Вариант 1 -> {data}')
@@ -46,3 +49,4 @@ def task2():
     print(f'Вариант 2 -> {data}')
 
 
+task2()
