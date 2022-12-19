@@ -37,13 +37,20 @@ def task2():
     for i in range(len(data)):
         if data[i] == max(data[:i+1:]) and data[i] not in li:
                 li.append(data[i])
-    print(f'Вариант 1 -> {li}')
+    print(f'Вариант 2 -> {li}')
 
 def task3():
     '''
     Напишите программу, удаляющую из текста все слова, содержащие "абв".
     абвгд гдежз жзе абв ыопыпт' -> ' гдежз жзе ыопыпт'
     '''
+    # Вариант мой
     text = 'абвгд гдежз жзе абв ыопыпт'
     li = list(filter(lambda x:'абв' not in x, text.split()))
-    print(li)
+    print(" ".join(li))
+
+    # Вариант преподавателя
+    del_st = lambda x, y: " ".join([i for i in x.split() if y not in i])
+    print(del_st('абвгд гдежз жзе абв ыопыпт', 'абв'))
+
+task2()
