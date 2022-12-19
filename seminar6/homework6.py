@@ -21,6 +21,18 @@ def task2():
     '''
     data = [1, 5, 2, 3, 4, 6, 1, 7]
     
+    # Вариант 1
+    a = [data[0]]
+    for i in data:
+        if i > max(a):
+            a.append(i)
+    print(f'Вариант 1 -> {a}')
+    # Вариант 2
+    li = []
+    for i in range(len(data)):
+        if data[i] == max(data[:i+1:]) and data[i] not in li:
+                li.append(data[i])
+    print(f'Вариант 2 -> {li}')
 
 
 def task3():
