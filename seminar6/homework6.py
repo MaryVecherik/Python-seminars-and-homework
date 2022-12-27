@@ -28,7 +28,7 @@ def task2():
     print(f'Вариант 1 -> {li}')
     
     # Вариант 2
-    res = list(map(lambda x: data[x] == max(data[:x+1:]), range(len(data))))
+    res = list(map(lambda x: data[x] if data[x] == max(data[:x+1:]) else None, range(len(data))))
     print(f'Вариант 2 -> {res}')
     
     # Вывод [1, 5, 6, 7]
