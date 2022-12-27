@@ -1,6 +1,6 @@
 import random
-candys = 117
 
+candys = 117
 
 def input_candy():
     global candys
@@ -11,7 +11,6 @@ def input_candy():
             break
         else:
             print('Столько взять нельзя')
-
 
 def bot_take():
     global candys
