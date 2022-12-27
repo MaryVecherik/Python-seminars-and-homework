@@ -12,11 +12,6 @@ def task1():
     x = {x : 3*x + 1 for x in range(1, n+1)}
     print(x)
 
-    f = '3*x+1'
-    # n = int(input('N: '))
-    x = {x: eval(f) for x in range(1, n+1)}
-    print(x)
-
 def task2():
     '''
     Дан список чисел. Создайте список, в который попадают числа, описываемые 
@@ -31,6 +26,7 @@ def task2():
         if data[i] == max(data[:i+1:]) and data[i] not in li:
                 li.append(data[i])
     print(f'Вариант 1 -> {li}')
+    
     # Вариант 2
     res = list(map(lambda x: data[x] == max(data[:x+1:]), range(len(data))))
     print(f'Вариант 2 -> {res}')
