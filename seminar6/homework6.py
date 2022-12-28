@@ -22,15 +22,10 @@ def task2():
     data = [1, 5, 2, 3, 4, 6, 1, 7]
     
     a = [data[x] for x in range(len(data)) if data[x] == max(data[:x+1:])]
-    print(f'Вариант 2 -> {a}')
+    print(f'Вариант 1 -> {a}')
 
-    # работает не корректно.
-    b = list(map(lambda x: data[x] if data[x] == max(data[:x+1:]) else None, range(len(data))))
-    print(f'Вариант 3 -> {b}')
-
-    # возвращает список индексов по заданному условию.
-    c = list(filter(lambda x: data[x] == max(data[:x+1:]), range(len(data))))
-    print(f'Вариант 4 -> {c}')
+    d = list(map(lambda x: data[x], filter(lambda x: data[x] == max(data[:x+1:]), range(len(data)))))
+    print(f'Вариант 2 -> {d}')
 
 def task3():
     '''
