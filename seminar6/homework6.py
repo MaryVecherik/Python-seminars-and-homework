@@ -20,27 +20,17 @@ def task2():
     [1, 5, 2, 3, 4, 6, 1, 7] => [1, 2, 3] или [1, 7] или [1, 6, 7] и т.д.
     '''
     data = [1, 5, 2, 3, 4, 6, 1, 7]
-    # Вариант 1
-    li = []
-    for i in range(len(data)):
-        if data[i] == max(data[:i+1:]) and data[i] not in li:
-                li.append(data[i])
-    print(f'Вариант 1 -> {li}')
     
-    # Вариант 2 -  
     a = [data[x] for x in range(len(data)) if data[x] == max(data[:x+1:])]
     print(f'Вариант 2 -> {a}')
 
-    # Вариант 2 - работает не корректно.
+    # работает не корректно.
     b = list(map(lambda x: data[x] if data[x] == max(data[:x+1:]) else None, range(len(data))))
     print(f'Вариант 3 -> {b}')
 
-    # Вариант 2 - возвращает список индексов по заданному условию.
+    # возвращает список индексов по заданному условию.
     c = list(filter(lambda x: data[x] == max(data[:x+1:]), range(len(data))))
     print(f'Вариант 4 -> {c}')
-
-    
-
 
 def task3():
     '''
@@ -50,6 +40,5 @@ def task3():
     text = 'абвгд гдежз жзе абв ыопыпт'
     li = list(filter(lambda x:'абв' not in x, text.split()))
     print(" ".join(li))
-
 
 task2()
