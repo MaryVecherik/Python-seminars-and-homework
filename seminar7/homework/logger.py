@@ -24,11 +24,13 @@ def get_data_txt():
         f.close()
         return data
 
-def get_data_csv():      # доделать  
+def get_data_csv():
     with open('base.csv', 'r', encoding='utf-8') as f:
         data = csv.reader(f)
+        list = []
         for row in data:
-            print(row)
+            list.append(row)
+        return list
 
 
     

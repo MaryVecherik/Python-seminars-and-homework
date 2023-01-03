@@ -13,6 +13,17 @@ def search_data(data, base):
     return list
 
 
-def search_data_CSV():
+def search_data_CSV(data, base):
     """ Поиск """
-    
+    base = sum(base, [])
+    list =[]
+    flag =  True
+    for i in base:
+        if data in i:
+            list.append(i)
+            flag = False
+    if flag:
+        list.append('Контакт не найден')
+    return list
+
+  

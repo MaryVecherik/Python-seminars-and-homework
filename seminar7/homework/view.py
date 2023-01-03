@@ -1,4 +1,3 @@
-import model
 
 def choose_mode():
     """ Выбор режима прогроммы """

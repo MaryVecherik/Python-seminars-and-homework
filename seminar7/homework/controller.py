@@ -11,12 +11,9 @@ def start():
     
     elif mode == '2':
         contact = view.search_data()
-        base = log.get_data()
+        base = log.get_data_txt()
         view.show_data(model.search_data(contact, base))
-        
-
         base2 = log.get_data_csv()
-        print(base2)
-        # model.search_data_CSV(contact, base2)
+        view.show_data(model.search_data_CSV(contact, base2))
     
 
