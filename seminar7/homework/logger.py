@@ -24,7 +24,7 @@ def get_data_txt():
         f.close()
         return data
 
-def get_data_csv():        
+def get_data_csv():      # доделать  
     with open('base.csv', 'r', encoding='utf-8') as f:
         data = csv.reader(f)
         for row in data:
