@@ -20,5 +20,6 @@ def search_data():
 
 def show_data(data):
     """ Показать """
+    print('Результат поиска: ')
     for i in data:
         print(i)
