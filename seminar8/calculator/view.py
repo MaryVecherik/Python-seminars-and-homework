@@ -3,17 +3,18 @@
 
 def choose() -> str:
     """"Выбор режима работы приложения"""
-    pass
+    return (input('Введите режим программы(1-пример, 2-уравнение, 3-многочлен, 4-история): '))
 
 
 def get_expr() -> str:
     """"Запрашивает у пользователя задачу"""
-    pass
+    expr = input('Введите Задачу: ')
+    return (f'{expr}')
 
 
 def show_res(res: str):
     """Выводит результат"""
-    pass
+    print(f'{res}')
 
 
 def erorr_mode():
@@ -23,4 +24,4 @@ def erorr_mode():
 
 def show_history(history: str):
     """Выводит истроию оперций"""
-    pass
+    print(f'История: \n{history}')
