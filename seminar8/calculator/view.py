@@ -9,17 +9,20 @@ def choose() -> str:
 def get_expr() -> str:
     """"Запрашивает у пользователя задачу"""
     expr = input('Введите Задачу: ')
-    return (f'{expr}')
+    try:
+        return (f'{expr}')
+    except ValueError:
+        print('Incorrect input')
 
 
 def show_res(res: str):
     """Выводит результат"""
-    print(f'{res}')
+    print(f'Результат: {res}')
 
 
 def erorr_mode():
     """Выводит сообщение об ошибке выбора режима"""
-    pass
+    return print('Вы ввели неверный режим прграммы!')
 
 
 def show_history(history: str):
