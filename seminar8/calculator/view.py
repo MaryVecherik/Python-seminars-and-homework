@@ -9,11 +9,7 @@ def choose() -> str:
 def get_expr() -> str:
     """"Запрашивает у пользователя задачу"""
     expr = input('Введите Задачу: ')
-    try:
-        return (f'{expr}')
-    except ValueError:
-        print('Incorrect input')
-
+    return (f'{expr}')
 
 def show_res(res: str):
     """Выводит результат"""
