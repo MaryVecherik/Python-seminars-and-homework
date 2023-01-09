@@ -37,8 +37,8 @@ def game1():
 
     def win(candys, move, player1, player2):
         """Чей выйгрыш"""
-        if candys == 0:
-            return player1 if move % 2 == 0 else player2
+        if candys <= 28:
+            return player1 if move % 2 == 1 else player2
         else:
             return False
 
@@ -130,5 +130,5 @@ def game2():
 
 
 
-game2()
+game1()
 
