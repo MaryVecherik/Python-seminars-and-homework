@@ -12,8 +12,8 @@ def send_welcome(message):
     move[message.chat.id] = rnd(1, 2)
     candys[message.chat.id] = 117
     max_take = 28
-    player = message.chat.username
-    bot.send_message(message.chat.id, f'Привет{message.chat.username}! Тебя приветствует игра "Забери все конфеты!"')
+    player = message.chat.first_name
+    bot.send_message(message.chat.id, f'Привет {player}! Тебя приветствует игра "Забери все конфеты!"')
     bot.send_message(message.chat.id, f'Основные правила игры: Дано {candys[message.chat.id]} конфет, за один ход можно взять не более {max_take} конфет')
     
     while True:
@@ -30,12 +30,13 @@ def send_welcome(message):
             move[message.chat.id] += 1
 
 
-@bot.message_handler()
+
 def move_people(message):
     """Ход человека"""
     global player, max_take
     while True:
-        move = bot.send_message(message.chat.id, f'{player}, Ваш ход... ')
+        bot.send_message(message.chat.id, f'{player}, Ваш ход... ')
+        move = int(message.text)
         if move > 0 and move <= max_take and move <= candys[message.chat.id]:
             bot.send_message(message.chat.id, f'Ты забрал(а) {move} конфет')
             candys[message.chat.id] -= move
@@ -45,7 +46,7 @@ def move_people(message):
             bot.send_message(message.chat.id, f'Столько взять нельзя. Можно взять до {max_take} или не больше оставшегося количества конфет')
         return candys[message.chat.id]
 
-@bot.message_handler()
+
 def move_bot(message):
     """Ход бота"""
     global player, max_take
@@ -57,7 +58,7 @@ def move_bot(message):
         bot.send_message(message.chat.id, f'Осталось {candys[message.chat.id]} конфет')
         return candys[message.chat.id]
 
-@bot.message_handler()
+
 def win(message):
     """Чей выйгрыш"""
     global player
