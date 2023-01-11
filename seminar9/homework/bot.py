@@ -41,7 +41,6 @@ def send_welcome(message):
                 move[message.chat.id] += 1
 
 
-
 def take_people(message):
     """Ход человека"""
     global player, max_take, candys
@@ -54,7 +53,7 @@ def take_people(message):
             break
         else:
             bot.send_message(message.chat.id, f'Столько взять нельзя. Можно взять до {max_take} или не больше оставшегося количества конфет')
-        # return candys[message.chat.id]
+        return candys[message.chat.id]
 
 
 def win(message):
