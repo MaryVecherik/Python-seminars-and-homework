@@ -17,67 +17,54 @@ def send_welcome(message):
     bot.send_message(message.chat.id, f'Основные правила игры: Дано {candys[message.chat.id]} конфет, за один ход можно взять не более {max_take} конфет')
     
     while True:
-            if move[message.chat.id] % 2 == 0:
-                bot.register_next_step_handler(bot.send_message(message.chat.id, f'{player}, Ваш ход... '), move_people(message.text))
-                # candys[message.chat.id] = move_people(player, candys[message.chat.id], max_take)
-            else:
-                move = candys[message.chat.id] % (max_take + 1)
-                if move == 0:
-                    move = rnd(1, max_take) if candys[message.chat.id] >= max_take else candys[message.chat.id]
-                    bot.send_message(message.chat.id, f'Бот забрал {move} конфет')
-                    candys[message.chat.id] -= move
+                if move[message.chat.id] % 2 == 0:
+                    msg = bot.send_message(message.chat.id, f'{player}, Ваш ход... ') #ходит человек
+                    candys[message.chat.id] = bot.register_next_step_handler(msg, take_people)
+                else:
+                    take = rnd(1, candys[message.chat.id] % (max_take + 1)) #ходит бот
+                    bot.send_message(message.chat.id, f'Бот забрал {take} конфет')
+                    candys[message.chat.id] -= take
                     bot.send_message(message.chat.id, f'Осталось {candys[message.chat.id]} конфет')
-                # candys[message.chat.id] = move_bot(candys[message.chat.id], max_take)
+
+                # if move[message.chat.id] >= (candys[message.chat.id] // max_take) - 1:
+                #     temp = win()
+                #     if temp:
+                #         bot.send_message(message.chat.id, f'{temp} выиграл')
+                
+                if candys[message.chat.id] <= 28:
+                    if move % 2 == 1:
+                        bot.send_message(message.chat.id, f'{player} выиграл')
+                    else:
+                        bot.send_message(message.chat.id, 'Bыиграл Бот')
+                        break
+                
+                move[message.chat.id] += 1
 
 
-            if move[message.chat.id] >= (candys[message.chat.id] // max_take) - 1:
-                temp = win(candys[message.chat.id], move[message.chat.id], 'Бот')
-                if temp:
-                    print(f'{temp} выиграл')
-                    break
-            move[message.chat.id] += 1
 
-
-def move_people(message):
+def take_people(message):
     """Ход человека"""
-    global player, max_take
+    global player, max_take, candys
     while True:
-        # bot.send_message(message.chat.id, f'{player}, Ваш ход... ')
-        move = int(message.text)
-        if move > 0 and move <= max_take and move <= candys[message.chat.id]:
-            bot.send_message(message.chat.id, f'Ты забрал(а) {move} конфет')
-            candys[message.chat.id] -= move
+        take = int(message.text)
+        if take > 0 and take <= max_take and take <= candys[message.chat.id]:
+            bot.send_message(message.chat.id, f'Ты забрал(а) {take} конфет')
+            candys[message.chat.id] -= take
             bot.send_message(message.chat.id, f'Осталось {candys[message.chat.id]} конфет')
             break
         else:
             bot.send_message(message.chat.id, f'Столько взять нельзя. Можно взять до {max_take} или не больше оставшегося количества конфет')
-        return 
-        # candys[message.chat.id]
-
-
-def move_bot(message):
-    """Ход бота"""
-    global player, max_take
-    move = candys[message.chat.id] % (max_take + 1)
-    if move == 0:
-        move = rnd(1, max_take) if candys[message.chat.id] >= max_take else candys[message.chat.id]
-        bot.send_message(message.chat.id, f'Бот забрал {move} конфет')
-        candys[message.chat.id] -= move
-        bot.send_message(message.chat.id, f'Осталось {candys[message.chat.id]} конфет')
-        return candys[message.chat.id]
+        # return candys[message.chat.id]
 
 
 def win(message):
     """Чей выйгрыш"""
-    global player
+    global player, candys, move
     if candys[message.chat.id] <= 28:
         return player if move % 2 == 1 else 'Бот'
     else:
         return False
 
 
-
-
 print('server start')
-
 bot.infinity_polling()
