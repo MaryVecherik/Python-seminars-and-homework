@@ -4,10 +4,11 @@ from random import randint as rnd
 
 bot = telebot.TeleBot(TOKEN)
 candys = dict() 
-move = dict() 
+move = dict()
 
 @bot.message_handler(commands=['help', 'start'])
 def send_welcome(message):
+    print(message)
     global candys, move
     move[message.chat.id] = rnd(1, 2)
     candys[message.chat.id] = 117
@@ -19,6 +20,7 @@ def send_welcome(message):
     while True:
                 if move[message.chat.id] % 2 == 0:
                     msg = bot.send_message(message.chat.id, f'{player}, Ваш ход... ') #ходит человек
+                    print(message)
                     candys[message.chat.id] = bot.register_next_step_handler(msg, take_people)
                 else:
                     take = rnd(1, candys[message.chat.id] % (max_take + 1)) #ходит бот
@@ -31,29 +33,31 @@ def send_welcome(message):
                 #     if temp:
                 #         bot.send_message(message.chat.id, f'{temp} выиграл')
                 
-                if candys[message.chat.id] <= 28:
-                    if move % 2 == 1:
-                        bot.send_message(message.chat.id, f'{player} выиграл')
-                    else:
-                        bot.send_message(message.chat.id, 'Bыиграл Бот')
-                        break
+                if move[message.chat.id] >= (candys[message.chat.id] // max_take) - 1:
+                    if candys[message.chat.id] <= 28:
+                        if move % 2 == 1:
+                            bot.send_message(message.chat.id, f'{player} выиграл')
+                        else:
+                            bot.send_message(message.chat.id, 'Bыиграл Бот')
+                            break
                 
                 move[message.chat.id] += 1
 
 
 def take_people(message):
     """Ход человека"""
-    global player, max_take, candys
+    global max_take, candys
     while True:
-        take = int(message.text)
-        if take > 0 and take <= max_take and take <= candys[message.chat.id]:
-            bot.send_message(message.chat.id, f'Ты забрал(а) {take} конфет')
-            candys[message.chat.id] -= take
-            bot.send_message(message.chat.id, f'Осталось {candys[message.chat.id]} конфет')
-            break
-        else:
-            bot.send_message(message.chat.id, f'Столько взять нельзя. Можно взять до {max_take} или не больше оставшегося количества конфет')
-        return candys[message.chat.id]
+            # take = int(message.text)
+            if int(message.text) > 0 and int(message.text) <= max_take and int(message.text) <= candys[message.chat.id]:
+                bot.send_message(message.chat.id, f'Ты забрал(а) {int(message.text)} конфет')
+                candys[message.chat.id] -= int(message.text)
+                bot.send_message(message.chat.id, f'Осталось {candys[message.chat.id]} конфет')
+                break
+            else:
+                bot.send_message(message.chat.id, f'Столько взять нельзя. Можно взять до {28} или не больше оставшегося количества конфет')
+            
+            return candys[message.chat.id]
 
 
 def win(message):
